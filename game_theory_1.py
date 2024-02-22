@@ -26,7 +26,48 @@ class game_theory:
             return np.random.choice(['D','C'])
         elif strategy == 6:
             return np.random.choice(['C','D'], p=[0.7,0.3])
-    
+        elif strategy == 7:
+            if count <= 2*rounds/3:
+                return 'C'
+            else:
+                return 'D'
+        elif strategy == 8:
+            return 'C'  
+        elif strategy == 9:
+            if count <= 3*rounds/4:
+                return 'C'
+            else:
+                return 'D'
+        elif strategy == 10:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
+        elif strategy == 11:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
+        elif strategy == 12:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
+        elif strategy == 13:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
+        elif strategy == 14:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
+        elif strategy == 15:
+            if not player1_history or not player2_history:
+                return 'C'
+            else:
+                return player2_history[-1]
     #Play a round and return the payoff for each player 
     def play_round(self, player1_action, player2_action):
         return self.payoff_matrix[(player1_action,player2_action)]
@@ -34,7 +75,7 @@ class game_theory:
         
     #Play the simulation 
     def play_game(self, rounds):
-        size = 6  #input the number of strategies
+        size = 15  #input the number of strategies
         total_payoff_1_list = [[0] * size for _ in range(size)]
         total_payoff_2_list= [[0] * size for _ in range(size)]
   
@@ -101,8 +142,8 @@ print(prisoners_dillema.play_game(rounds)[1][2][0])
 
 #Get best strategy
 best_strategies=[]
-for i in range(6):
-    best_strategies.append(sum(scores_of_player1[i])/6)
+for i in range(15):
+    best_strategies.append(sum(scores_of_player1[i])/15)
 
 #print best strategies
 print(best_strategies)
