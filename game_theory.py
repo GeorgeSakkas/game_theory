@@ -1,6 +1,7 @@
 import random 
 
 class game_theory:
+
     def __init__(self, payoff_matrix):
         self.payoff_matrix = payoff_matrix
 
@@ -76,3 +77,27 @@ payoff_matrix = {
 
 #Create an instance of the class
 prisoners_dillema=game_theory(payoff_matrix)
+
+#Get results of the simulation
+rounds=200
+print(prisoners_dillema.play_game(rounds))
+
+#Get results for the first player
+scores_of_player1=prisoners_dillema.play_game(rounds)[0]
+print(scores_of_player1)
+
+#Get results for the second player
+scores_of_player2=prisoners_dillema.play_game(rounds)[1]
+print(scores_of_player2)
+
+#Consistency check, if we take the transpose of the total payoff matrix of the second player it should match the first.
+print(prisoners_dillema.play_game(rounds)[0][0][2])
+print(prisoners_dillema.play_game(rounds)[1][2][0])
+
+#Get best strategy
+best_strategies=[]
+for i in range(4):
+    best_strategies.append(sum(scores_of_player1[i])/4)
+
+#print best strategies
+print(best_strategies)
